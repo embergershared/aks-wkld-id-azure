@@ -90,6 +90,11 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
+    - name: Show Env variable
+      working-directory: ./terraform
+      run: echo $TF_VAR_CLIENT_ID
+
+    # Generates an execution plan for Terraform
     - name: Terraform Plan
       working-directory: ./terraform
       run: terraform plan -input=false
