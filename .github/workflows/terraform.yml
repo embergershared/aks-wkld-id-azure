@@ -52,11 +52,16 @@ on:
 permissions:
   contents: read
 
+env:
+  TF_VAR_TENANT_ID: 'bed3f66f-00c5-402e-8f75-44abca53e730'
+  TF_VAR_SUBSCRIPTION_ID: 'a73ced30-c712-4405-8828-67a833b1e39a'
+  TF_VAR_CLIENT_ID: '3d0e418c-70ed-4add-8e38-768c0ec6afb3'
+
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
+    environment: ME-MngEnvMCAP912772-EmmanuelBergerat-1
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
