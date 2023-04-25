@@ -1,4 +1,4 @@
-# AKS Workload Identity - Azure repo
+# AKS Workload Identity Proof Of Concept - Azure repo
 
 ## Overview
 
