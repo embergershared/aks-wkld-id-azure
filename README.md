@@ -1,20 +1,35 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# AKS Workload Identity - Azure repo
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Overview
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+This terraform repository contains the code to deploy an application Workload Identity in both Azure and Kubernetes.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+It is inspired by the tutorial [Use a workload identity with an application on Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Description
+
+The `terraform` folder contains `azurerm` resources that will be used for the Workload Identity, outside of any `kubernetes` dependencies or link.
+
+It mainly deploys:
+
+- A **Resource Group**,
+- An Azure resource the App in Kubernetes will connect to. Here, an Azure **Key vault** with a secret,
+- An **User Assigned Identity** that will be the authentication context for the App in Kubernetes,
+- An Azure **Container Registry** that will store the iterative versions of the docker image the App in Kubernetes,
+- The required **Role Assignments** to authorize the various identities used.
+
+The `k8s` folder contains `kubernetes` and `azurerm` resources that will be use the Workload Identity in AKS. The `azurerm` that are in this folder either uses the `data` source to access the previously created resources or create resources that require `kubernetes` or `AKS` related inputs, like the `namespace` name.
+
+It mainly deploys:
+
+- A **Role Assignment** to allow the target AKS cluster to pull images from the ACR,
+- A **Federated Identity Credential** in the User Assigned Identity used, to allow AKS `OIDC Issuer` to be trusted when using the Workload Identity,
+- A **namespace**,
+- A **Service Account**,
+- A **pod**.
+
+## References
+
+- [Use Azure AD workload identity with Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview)
+
+- [Use a workload identity with an application on Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity)
