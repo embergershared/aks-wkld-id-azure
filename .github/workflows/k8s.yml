@@ -42,7 +42,7 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'terraform'
+name: 'k8s'
 
 on:
   push:
@@ -82,22 +82,22 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      working-directory: ./terraform
+      working-directory: ./k8s
       run: terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      working-directory: ./terraform
+      working-directory: ./k8s
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      working-directory: ./terraform
+      working-directory: ./k8s
       run: terraform plan -input=false
 
     #   # On push to "main", build or change infrastructure according to Terraform configuration files
     #   # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     # - name: Terraform Apply
-    #   working-directory: ./terraform
+    #   working-directory: ./k8s
     #   if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
     #   run: terraform apply -auto-approve -input=false
