@@ -18,7 +18,7 @@ It mainly deploys:
 - An Azure **Container Registry** that will store the iterative versions of the docker image the App in Kubernetes,
 - The required **Role Assignments** to authorize the various identities used.
 
-The `k8s` folder contains `kubernetes` and `azurerm` resources that will be use the Workload Identity in AKS. The `azurerm` that are in this folder either uses the `data` source to access the previously created resources or create resources that require `kubernetes` or `AKS` related inputs, like the `namespace` name.
+The `k8s` folder contains `kubernetes` and `azurerm` resources that will be use the Workload Identity in AKS. The `azurerm` that are in this folder _either_ uses the `data source` to access the previously created resources _or_ `create resources` that require `kubernetes` or `AKS` related inputs, like the `namespace` name.
 
 It mainly deploys:
 
