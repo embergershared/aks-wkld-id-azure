@@ -13,7 +13,7 @@ The `terraform` folder contains `azurerm` resources that will be used for the Wo
 It mainly deploys:
 
 - A **Resource Group**,
-- An Azure resource the App in Kubernetes will connect to. Here, an Azure **Key vault** with a secret,
+- An Azure resource the App in Kubernetes will connect to. Here, an Azure **Key vault** with a **secret**,
 - An **User Assigned Identity** that will be the authentication context for the App in Kubernetes,
 - An Azure **Container Registry** that will store the iterative versions of the docker image the App in Kubernetes,
 - The required **Role Assignments** to authorize the various identities used.
