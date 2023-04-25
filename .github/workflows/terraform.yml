@@ -55,8 +55,8 @@ permissions:
 env:
   TF_VAR_tenant_id: 'bed3f66f-00c5-402e-8f75-44abca53e730'
   TF_VAR_subscription_id: 'a73ced30-c712-4405-8828-67a833b1e39a'
-  TF_VAR_client_id: '3d0e418c-70ed-4add-8e38-768c0ec6afb3'
-  TF_VAR_client_secret: ${{secrets.CLIENT_SECRET}}
+  TF_VAR_client_id: ${{ vars.CLIENT_ID }}
+  TF_VAR_client_secret: ${{ secrets.CLIENT_SECRET }}
 
 jobs:
   terraform:
