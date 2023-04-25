@@ -53,9 +53,9 @@ permissions:
   contents: read
 
 env:
-  TF_VAR_tenant_id: ${{env.TENANT_ID}}
-  TF_VAR_subscription_id: ${{env.SUBSCRIPTION_ID}}
-  TF_VAR_client_id: ${{env.CLIENT_ID}}
+  TF_VAR_tenant_id: ${{vars.TENANT_ID}}
+  TF_VAR_subscription_id: ${{vars.SUBSCRIPTION_ID}}
+  TF_VAR_client_id: ${{vars.CLIENT_ID}}
   TF_VAR_client_secret: ${{secrets.CLIENT_SECRET}}
 
 jobs:
